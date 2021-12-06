@@ -8,7 +8,7 @@
         <meta name="description" content="Access point to social/apps/projects belonging to Blake Tiemann">
         <meta name="author" content="Blake Tiemann">
 
-        <style type="text/css">
+        <!-- <style type="text/css">
             html {
                 overflow: auto;
             }
@@ -28,21 +28,24 @@
                 overflow-y: auto;
                 overflow-x: hidden;
             }
-        </style>
+        </style> -->
     </head>
 
     <body>
+        <button onclick="play()">PLAY</button>
+        <button onclick="pause()">PAUSE</button>
+
         <!-- Video -->
-        <!-- <iframe
+        <iframe
             id="video"
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&amp;mute=1&amp;controls=0&amp;showinfo=0"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?mute=1&amp;controls=0&amp;showinfo=0&amp;autoplay=0"
             title="You Got Rick Rolled"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
-        ></iframe> -->
+        ></iframe>
 
         <!-- Audio -->
         <audio id="audio" autoplay loop>
@@ -50,18 +53,20 @@
         </audio>
     </body>
 
-    <!-- <script>
+    <script>
         function play() {
             var audio = document.querySelector('#audio');
             audio.play()
+
+            var video = document.querySelector('#video');
+            video.src = video.src.slice(0, -1) + '1';
         }
         function pause() {
             var audio = document.querySelector('#audio');
-            audio.pause()
+            audio.pause();
+
+            var video = document.querySelector('#video');
+            video.src = video.src.slice(0, -1) + '0';
         }
-        setTimeout(function () {
-            document.querySelector('#play').click();
-            console.log('hello');
-        }, 50)
-    </script> -->
+    </script>
 </html>
