@@ -1,48 +1,84 @@
 <template>
-  <div class="overlay">
-    <h1>Just Click This Button</h1>
-    <button @click="prank()">Click Me</button>
-  </div>
+  <div class="view">
+    <div class="overlay overlay--home" @click="prank()">
 
-  <div>
-    <iframe
-      class="video"
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ?mute=1&amp;controls=0&amp;showinfo=0&amp;autoplay=0"
-      title="You Got Rick Rolled"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
+      <h1>Just Click This Button</h1>
+      <button v-touch:swipe="hello()">Click Me</button>
+      <div class="overlay__swipe"/>
+    </div>
 
-    <audio class="audio" autoplay loop>
-      <source src="./assets/audio/never_gonna_give_you_up.mp3" type="audio/mp3" />
-    </audio>
+    <div class="overlay overlay--next">
+      <!-- <video autoplay muted controls>
+        <source src="./assets/video/rickroll.mp4" type="video/mp4">
+      </video> -->
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Main",
+  data() {
+    return {
+      video: () => null
+    }
+  },
   mounted() {
+    this.video = () => document.querySelector('video')
+    // this.load((blobUrl) => {
+    //     this.video().src = blobUrl
+    // })
   },
   methods: {
+    load(callback) {
+        const req = new XMLHttpRequest()
+        req.open('GET', './assets/video/rickroll.mp4', true)
+        req.responseType = 'blob'
+
+        req.onload = function () {
+          if (this.status === 200) {
+            callback(URL.createObjectURL(this.response))
+          }
+        }
+
+        req.send()
+    },
+    hello() {
+      console.log('helloworld')
+    },
     prank() {
-        var overlay = document.querySelector('.overlay')
+        let overlay = document.querySelector('.overlay')
+        let swipe = document.querySelector('.overlay__swipe')
+
         overlay.classList.add('overlay--evaporate')
+        swipe.classList.add('overlay__swipe--evaporate')
 
-        var audio = document.querySelector('.audio')
-        audio.play()
-
-        var video = document.querySelector('.video')
-        video.src = video.src.slice(0, -1) + '1'
+        this.play()
+    },
+    play() {
+      // this.video().muted = false
     }
   }
 };
 </script>
 
-<style scoped>
+<style>
+:root {
+  --global-viewPadding: 15px;
+
+  --color-white: #fff;
+  --color-black: black;
+
+  --radius-sm: 0.3rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+}
+body {
+  margin: 0;
+  background: var(--color-black);
+  font-family: "Roboto", sans-serif;
+}
 .overlay {
-  z-index: 999999;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -54,38 +90,53 @@ export default {
   flex-direction: column;
   justify-content: center;
   transition: bottom 0.75s;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+.overlay--home {
+  z-index: 100;
+}
+.overlay--next {
+  background: var(--color-black);
+  z-index: 90;
 }
 .overlay--evaporate {
   bottom: 100vh;
 }
-.overlay--evaporate * {
+.overlay--evaporate button,h1 {
   display: none;
 }
+.overlay__swipe {
+  width: 30vw;
+  height: 7px;
+  background: var(--color-white);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: var(--global-viewPadding);
+  transition: all 0.75s;
+}
 h1 {
-  color: white;
-  font-family: "Roboto", sans-serif;
+  color: var(--color-white);
 }
 button {
   display: inline-block;
   padding: 0.35em 1.2em;
-  border: 0.1em solid #ffffff;
+  border: 0.1em solid var(--color-white);
   margin: 0 0.3em 0.3em 0;
-  border-radius: 0.12em;
+  border-radius: var(--radius-sm);
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 24px;
-  color: #ffffff;
+  color: var(--color-white);
   text-align: center;
   transition: all 0.2s;
   background-color: transparent;
 }
 button:hover {
-  color: #000000;
-  background-color: #ffffff;
+  color: var(--color-black);
+  background-color: var(--color-white);
 }
-iframe {
+video {
   position: fixed;
   top: 0;
   left: 0;
