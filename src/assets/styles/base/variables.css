@@ -1,0 +1,13 @@
+:root {
+  --global-viewPadding: 15px;
+
+  --color-white: #fff;
+  --color-black: black;
+
+  --color-bluegreen: #abe9cd;
+  --color-blue: #3eadcf;
+
+  --radius-sm: 0.3rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+}

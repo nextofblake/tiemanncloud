@@ -1,16 +1,20 @@
 <template>
-  <div class="view">
-    <div class="overlay overlay--home" @click="prank()">
-
-      <h1>Just Click This Button</h1>
-      <button v-touch:swipe="hello()">Click Me</button>
-      <div class="overlay__swipe"/>
+  <div class="view" v-on:touchstart="handleTouchStart" v-on:touchend="handleTouchEnd">
+    <div class="overlay overlay--100">
+      <button @click="next()">Click Me</button>
+      <div class="overlay__swipe" />
     </div>
 
-    <div class="overlay overlay--next">
-      <!-- <video autoplay muted controls>
+    <div class="overlay overlay--90">
+      <video autoplay muted>
         <source src="./assets/video/rickroll.mp4" type="video/mp4">
-      </video> -->
+      </video>
+      <div class="overlay__swipe" />
+    </div>
+
+    <div class="overlay overlay--80">
+      HELLO
+      <div class="overlay__swipe"/>
     </div>
   </div>
 </template>
@@ -20,90 +24,115 @@ export default {
   name: "Main",
   data() {
     return {
-      video: () => null
-    }
+      video: () => null,
+      viewHeight: () => null,
+      view: () => null,
+      slider: {
+        scrollHeight: 0,
+        overlayKey: 0,
+        overlayStart: 0,
+        overlayEnd: 2,
+      },
+      swipe: {
+        startY: 0,
+        endY: 0,
+      }
+    };
   },
   mounted() {
-    this.video = () => document.querySelector('video')
+    this.video = () => document.querySelector("video")
+    this.viewHeight = () => document.documentElement.clientHeight
+    this.view = () => document.querySelector(".view")
     // this.load((blobUrl) => {
     //     this.video().src = blobUrl
     // })
   },
   methods: {
-    load(callback) {
-        const req = new XMLHttpRequest()
-        req.open('GET', './assets/video/rickroll.mp4', true)
-        req.responseType = 'blob'
-
-        req.onload = function () {
-          if (this.status === 200) {
-            callback(URL.createObjectURL(this.response))
-          }
-        }
-
-        req.send()
+    handleClick(event) {
+      console.log('click', event)
     },
-    hello() {
-      console.log('helloworld')
+    handleTouchStart(event) {
+      console.log('start', event)
+      this.swipe.startY = event.touches[0].clientY
     },
-    prank() {
-        let overlay = document.querySelector('.overlay')
-        let swipe = document.querySelector('.overlay__swipe')
+    handleTouchEnd(event) {
+      console.log('end', event)
+      this.swipe.endY = event.changedTouches[0].clientY
 
-        overlay.classList.add('overlay--evaporate')
-        swipe.classList.add('overlay__swipe--evaporate')
-
-        this.play()
+      const upSwipe = this.swipe.startY > this.swipe.endY
+      if (upSwipe) {
+        this.next()
+      }
+      else {
+        this.back()
+      }
     },
-    play() {
-      // this.video().muted = false
+    next() {
+      if (this.slider.overlayKey === this.slider.overlayEnd) return
+      this.slider.overlayKey++
+
+      const newHeight = this.slider.overlayKey * this.viewHeight()
+      this.scrollBurn(newHeight)
+      this.video().muted = false
+      this.video().play()
+
+    },
+    back() {
+      if (this.slider.overlayKey === this.slider.overlayStart) return
+      this.slider.overlayKey--
+
+      const newHeight = this.slider.overlayKey * this.viewHeight()
+      this.scrollBurn(newHeight)
+      this.video().muted = true
+    },
+    scrollBurn(height) {
+      this.view().scrollTo(0, height)
+      this.view().classList.add('view--freeze')
     }
-  }
+  },
 };
 </script>
 
 <style>
-:root {
-  --global-viewPadding: 15px;
+@import "./assets/styles/core.css";
 
-  --color-white: #fff;
-  --color-black: black;
-
-  --radius-sm: 0.3rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
-}
-body {
-  margin: 0;
-  background: var(--color-black);
-  font-family: "Roboto", sans-serif;
-}
-.overlay {
+.view {
   position: absolute;
   top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   left: 0;
-  background-image: linear-gradient(135deg, #abe9cd 0%, #3eadcf 74%);
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+.view--freeze {
+  overflow: hidden;
+}
+.overlay {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+    135deg,
+    var(--color-bluegreen) 0%,
+    var(--color-blue) 74%
+  );
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  transition: bottom 0.75s;
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
-.overlay--home {
+.overlay--100 {
   z-index: 100;
 }
-.overlay--next {
-  background: var(--color-black);
+.overlay--90 {
   z-index: 90;
+  background: var(--color-black);
 }
-.overlay--evaporate {
-  bottom: 100vh;
-}
-.overlay--evaporate button,h1 {
-  display: none;
+.overlay--80 {
+  z-index: 80;
+  background: pink;
 }
 .overlay__swipe {
   width: 30vw;
@@ -113,40 +142,6 @@ body {
   position: absolute;
   bottom: var(--global-viewPadding);
   transition: all 0.75s;
-}
-h1 {
-  color: var(--color-white);
-}
-button {
-  display: inline-block;
-  padding: 0.35em 1.2em;
-  border: 0.1em solid var(--color-white);
-  margin: 0 0.3em 0.3em 0;
-  border-radius: var(--radius-sm);
-  box-sizing: border-box;
-  text-decoration: none;
-  font-weight: 300;
-  font-size: 24px;
-  color: var(--color-white);
-  text-align: center;
-  transition: all 0.2s;
-  background-color: transparent;
-}
-button:hover {
-  color: var(--color-black);
-  background-color: var(--color-white);
-}
-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+  z-index: 100;
 }
 </style>

@@ -1,0 +1,9 @@
+/* Base     - bootstrap css, contains all variables*/
+@import './base/reset.css';
+@import './base/variables.css';
+
+/* Elements - HTML elements, should only effect itself not children */
+@import './elements/body.css';
+@import './elements/button.css';
+@import './elements/header.css';
+@import './elements/video.css';
