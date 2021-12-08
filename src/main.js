@@ -1,7 +1,5 @@
 import { createApp } from 'vue'
-import Main from './Main.vue'
-import Vue3TouchEvents from "vue3-touch-events";
+import Core from './Core.vue'
 
-const app = createApp(Main)
-app.use(Vue3TouchEvents)
+const app = createApp(Core)
 app.mount('#app')

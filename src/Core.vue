@@ -1,955 +1,117 @@
 <template>
-    <div id="neon"><span>Synth</span><span>Wave</span></div>
-<div id="grid">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-</div>
-<div id="top">
-    <div id="sun"></div>
-</div>
-<div id="mountain">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-</div><button id="fscreen">Full Screen</button>
+  <div class="view">
+    <div class="overlay overlay--100">
+      <span>{{ test1 }}</span>
+      <span>{{ videoVolume }}</span>
+      <span>{{ scrollScreen }}</span>
+
+      <button @click="next()">Click Me</button>
+      <div class="overlay__swipe" />
+    </div>
+
+    <div class="overlay overlay--90">
+      <video autoplay muted loop playsinline :volume="videoVolume">
+        <source src="./assets/video/rickroll.mp4#t=1" type="video/mp4" />
+      </video>
+      <div class="overlay__swipe" />
+    </div>
+  </div>
 </template>
 
 <script>
+import { TouchService } from "./services/TouchService";
+import { AudioService } from "./services/AudioService";
+
 export default {
-  name: 'Core',
-  mounted() {
-    // Stars Position
-    let topp=document.getElementById("top")
-    function setStars(numS){
-        for (let i=0; i<numS; i++){
-            let stars=document.createElement("div")
-            stars.setAttribute("class","stars")
-            stars.style.left=100*Math.random()+"%"
-            stars.style.top=55*Math.random()+"%"
-            topp.appendChild(stars)
-        }
-    }
-    setStars(250)
-
-    // Sun Animation
-    let sunset=document.getElementById("sun");
-    function synthSun(nmb){
-        for (let i=0; i<nmb*2; i++){
-            let sunin=document.createElement("div")
-            sunin.setAttribute("class","sun")
-            sunin.style.animationDelay=-.5*i++ + "s"
-            sunset.appendChild(sunin)
-        }
-    }
-    synthSun(8)
-
-    // Full Screen Function
-    // For the "full screen" mode I used Isladjan's code from his incredible "Parallax scroll animation". (https://codepen.io/isladjan/pen/abdyPBw)
-    let fullscreen
-    let scrn=document.getElementById("fscreen")
-    scrn.addEventListener("click",function(){
-        if(!fullscreen){
-            fullscreen=true
-            document.documentElement.requestFullscreen()
-            scrn.style.textDecoration="line-through 2px red"
-        }
-        else{
-            fullscreen=false
-            document.exitFullscreen()
-            scrn.style.textDecoration="none"
-        }
-    })
+  name: "Core",
+  data() {
+    return {
+      video: () => null,
+      viewHeight: () => null,
+      viewport: () => document.scrollingElement || document.documentElement,
+      videoVolume: 1,
+      scrollScreen: 0,
+      touchService: null,
+      audioService: null,
+      test1: 0,
+      track: null,
+      context: null,
+      gainNode: null
+    };
   },
-}
+  mounted() {
+    this.video = () => document.querySelector("audio");
+    this.viewHeight = () => document.documentElement.clientHeight;
+
+    this.audioService = new AudioService('./rickroll.mp3');
+    this.touchService = new TouchService(this.viewport());
+    this.touchService.scrollSubject.subscribe((top) => {
+      this.test1 = top;
+      this.handleScroll(top);
+    });
+  },
+  methods: {
+    handleScroll(scrollTop) {
+      const viewHeight = this.viewHeight();
+      // console.clear()
+      // console.log('onScroll', scrollTop)
+
+      this.videoVolume = scrollTop / viewHeight;
+      this.audioService.volume = this.videoVolume
+      this.scrollScreen = Math.round(scrollTop / viewHeight);
+    },
+    scrollTo(target) {
+      this.viewport().scrollTo({
+        top: target,
+        behavior: "smooth",
+      });
+    },
+    next() {
+      this.audioService.play()
+
+      this.scrollTo((this.scrollScreen + 1) * this.viewHeight());
+    },
+  },
+};
 </script>
 
 <style>
-@import url(//db.onlinewebfonts.com/c/c86f6e311c62f1ee74affa41d9c3686f?family=Streamster);
-@font-face{
-    font-family: "Streamster";
-    src: url("//db.onlinewebfonts.com/t/c86f6e311c62f1ee74affa41d9c3686f.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/c86f6e311c62f1ee74affa41d9c3686f.woff2") format("woff2");
+@import "./assets/styles/core.css";
+
+.overlay {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(
+    135deg,
+    var(--color-bluegreen) 0%,
+    var(--color-blue) 74%
+  );
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
-*{
-    margin: auto;
-    padding: 0;
-    cursor: default;
+.overlay > * {
+  margin-left: var(--global-viewPadding);
+  margin-right: var(--global-viewPadding);
 }
-body{
-    width: 100vw;
-    height: 100vh;
-    background: #09090e;
-    overflow: hidden;
+.overlay--100 {
+  z-index: 100;
 }
-#neon{
-    width: 50vw;
-    height: 18vw;
-    max-height: 60vh;
-    color: #fff;
-    text-align: center;
-    font-family: streamster;
-    font-size: 10vw;
-    text-shadow:
-    0 0 8px #fff,
-    0 0 24px #fff,
-    0 0 32px #f80022,
-    0 0 40px #f80022;
-    position: absolute;
-    inset: 0;
-    transform: rotate(-8deg);
-    z-index: 100;
+.overlay--90 {
+  z-index: 90;
+  background: var(--color-black);
 }
-span:nth-child(1){
-    animation: neon 1.7s infinite alternate;
-}
-span:nth-child(2){
-    animation: neon 1.7s infinite alternate-reverse;
-}
-@keyframes neon{
-    0%, 18%, 22%, 26%, 58%, 62%, 100%{
-        text-shadow:
-        0 0 8px #fff,
-        0 0 24px #fff,
-        0 0 32px #f80022,
-        0 0 40px #f80022;
-    }
-    20%, 24%, 60%{
-        text-shadow: none;
-    }
-}
-#neon::before{
-    content: "{";
-    position: absolute;
-    inset: 1vw 0 0 6vw;
-    transform: rotate(3deg);
-}
-#grid{
-    width: 180%;
-    height: 100%;
-    background: #8000804d;
-    display: grid;
-    grid-template: repeat(16,1fr) / repeat(40,1fr);
-    position: absolute;
-    inset: 0 0 -23% -40%;
-    transform: perspective(60vh) rotateX(75deg) translateY(-6.25vh);
-    animation: gridz .8s infinite linear;
-}
-@keyframes gridz{
-    100%{
-      transform: perspective(60vh) rotateX(75deg) translateY(6.25vh);
-    }
-}
-#grid div{
-    width: 100%;
-    height: 100%;
-    border: 1px solid #ccc;
-    filter: blur(1px);
-}
-#top{
-    width: 100%;
-    height: 55%;
-    background: linear-gradient(
-        #0D0221 0%,
-        #45125e 40%,
-        #A22561 80%,
-        #FF3864 100%
-    );
-    box-shadow:
-    0 0 100px purple,
-    0 0 200px purple;
-}
-.stars{
-    width: 1px;
-    height: 1px;
-    background: #fff;
-    position: absolute;
-}
-#sun{
-    width: 40vw;
-    max-width: 40vh;
-    height: 40vw;
-    max-height: 40vh;
-    background: linear-gradient(
-        #FF3864 0%,
-        #f80 100%
-    );
-    box-shadow:
-    inset 0 0 20px #800080,
-    0 0 120px #800080,
-    0 35vh 400px #add8e64d;
-    border-radius: 50%;
-    position: absolute;
-    inset: auto 0 55vh 0;
-    overflow: hidden;
-    z-index: 10;
-}
-.sun{
-    height: 0;
-    width: 100%;
-    position: absolute;
-    inset: 5vh 0 auto 0;
-    transform: translateY(6vh);
-    animation: sunset 6s linear infinite;
-}
-@keyframes sunset{
-    0%,5%{
-        background: #45125e;
-        opacity: 0;
-    }
-    10%{
-        opacity: 1;
-    }
-    70%{
-        background: #A22561;
-    }
-    100%{
-        height: 4vh;
-        background: #E03263;
-        transform: translateY(40vh);
-    }
-}
-#mountain::before{
-    content: "";
-    width: 100vw;
-    height: 4px;
-    background: #fff;
-    box-shadow:
-    0 0 8px #fff,
-    0 0 16px #fff,
-    0 0 24px #af62ff,
-    0 0 32px #af62ff;
-    position: absolute;
-    filter: blur(1px);
-    z-index: 20;
-}
-#mountain div{
-    background: linear-gradient(
-        #090910 40%,
-        #450547 100%
-    );
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    position: absolute;
-    z-index: 10;
-}
-#mountain div:nth-child(1){
-    width: 24vw;
-    height: 6vw;
-    max-height: 6vh;
-    inset: auto auto 45% -5%;
-}
-#mountain div:nth-child(2){
-    width: 24vw;
-    height: 8vw;
-    max-height: 8vh;
-    inset: auto auto 45% 5%;
-}
-#mountain div:nth-child(3){
-    width: 30vw;
-    height: 10vw;
-    max-height: 10vh;
-    inset: auto auto 45% 15%;
-}
-#mountain div:nth-child(4){
-    width: 30vw;
-    height: 18vw;
-    max-height: 18vh;
-    inset: auto auto 45% 30%;
-}
-#mountain div:nth-child(5){
-    width: 30vw;
-    height: 26vw;
-    max-height: 26vh;
-    inset: auto 30% 45% auto;
-}
-#mountain div:nth-child(6){
-    width: 30vw;
-    height: 10vw;
-    max-height: 10vh;
-    inset: auto 15% 45% auto;
-    z-index: 9;
-}
-#mountain div:nth-child(7){
-    width: 24vw;
-    height: 8vw;
-    max-height: 8vh;
-    inset: auto 5% 45% auto;
-    z-index: 8;
-}
-#mountain div:nth-child(8){
-    width: 24vw;
-    height: 6vw;
-    max-height: 6vh;
-    inset: auto -5% 45% auto;
-    z-index: 7;
-}
-#fscreen{
-    padding: 8px 12px;
-    background-color: transparent;
-    font-family: consolas;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    font-size: 1.2em;
-    color: #fff;
-    position: fixed;
-    inset: auto 5% 5% auto;
-    cursor: pointer;
-    transition: .2s;
-    z-index: 1001;
-}
-#fscreen:hover{
-    text-shadow:
-    0 0 8px #fff,
-    0 0 16px #fff,
-    0 0 24px #fff;
-}
-@media screen and (max-height:740px){
-    #neon{
-        width: 30vw;
-        height: 10.8vw;
-        font-size: 6vw;
-    }
+.overlay__swipe {
+  width: 30vw;
+  height: 7px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  position: absolute;
+  bottom: var(--global-viewPadding);
+  transition: all 0.75s;
+  z-index: 100;
 }
 </style>
