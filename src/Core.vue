@@ -1,17 +1,13 @@
 <template>
   <div class="view">
     <div class="overlay overlay--100">
-      <span>{{ test1 }}</span>
-      <span>{{ videoVolume }}</span>
-      <span>{{ scrollScreen }}</span>
-
       <button @click="next()">Click Me</button>
       <div class="overlay__swipe" />
     </div>
 
     <div class="overlay overlay--90">
-      <video autoplay muted loop playsinline :volume="videoVolume">
-        <source src="./assets/video/rickroll.mp4#t=1" type="video/mp4" />
+      <video loop playsinline>
+        <source :src="mp4Url" type="video/mp4" />
       </video>
       <div class="overlay__swipe" />
     </div>
@@ -19,58 +15,39 @@
 </template>
 
 <script>
-import { TouchService } from "./services/TouchService";
-import { AudioService } from "./services/AudioService";
+import { ScrollService } from "./services/ScrollService";
 
 export default {
   name: "Core",
   data() {
     return {
-      video: () => null,
-      viewHeight: () => null,
+      video: () => document.querySelector("video"),
+      viewHeight: () => document.documentElement.clientHeight,
       viewport: () => document.scrollingElement || document.documentElement,
-      videoVolume: 1,
-      scrollScreen: 0,
-      touchService: null,
-      audioService: null,
-      test1: 0,
-      track: null,
-      context: null,
-      gainNode: null
+      mp4Url: "rickroll.mp4#t=1.5",
+      scrollService: null,
     };
   },
   mounted() {
-    this.video = () => document.querySelector("audio");
-    this.viewHeight = () => document.documentElement.clientHeight;
+    // Register Service
+    // @todo => app service container
+    this.scrollService = new ScrollService(this.viewport);
+    window.scrollService = this.scrollService
 
-    this.audioService = new AudioService('./rickroll.mp3');
-    this.touchService = new TouchService(this.viewport());
-    this.touchService.scrollSubject.subscribe((top) => {
-      this.test1 = top;
-      this.handleScroll(top);
+    // Service Commands
+    this.scrollService.subject.subscribe(scrollTop => {
+      if (scrollTop <= this.viewHeight() / 2)
+        this.video().muted = true
+      else if (this.video().muted)
+        this.video().muted = false
     });
   },
   methods: {
-    handleScroll(scrollTop) {
-      const viewHeight = this.viewHeight();
-      // console.clear()
-      // console.log('onScroll', scrollTop)
-
-      this.videoVolume = scrollTop / viewHeight;
-      this.audioService.volume = this.videoVolume
-      this.scrollScreen = Math.round(scrollTop / viewHeight);
-    },
-    scrollTo(target) {
-      this.viewport().scrollTo({
-        top: target,
-        behavior: "smooth",
-      });
-    },
     next() {
-      this.audioService.play()
-
-      this.scrollTo((this.scrollScreen + 1) * this.viewHeight());
-    },
+      this.video().muted = false;
+      this.video().play()
+      this.scrollService.moveTo(document.querySelector('.overlay--100').scrollHeight);
+    }
   },
 };
 </script>
@@ -81,7 +58,6 @@ export default {
 .overlay {
   position: relative;
   height: 100vh;
-  width: 100vw;
   background-image: linear-gradient(
     135deg,
     var(--color-bluegreen) 0%,
@@ -92,10 +68,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-}
-.overlay > * {
-  margin-left: var(--global-viewPadding);
-  margin-right: var(--global-viewPadding);
 }
 .overlay--100 {
   z-index: 100;

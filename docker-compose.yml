@@ -4,5 +4,7 @@ services:
   webvue:
     image: webvue:latest
     build: .
+    volumes:
+      - ./dist:/usr/share/nginx/html
     ports:
       - 80:80
