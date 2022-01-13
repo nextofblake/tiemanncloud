@@ -16,7 +16,6 @@
 
 <script>
 import { ScrollService } from "./services/ScrollService";
-import { timer } from "rxjs";
 
 export default {
   name: "Core",
@@ -27,7 +26,6 @@ export default {
       viewport: () => document.scrollingElement || document.documentElement,
       mp4Url: "rickroll.mp4#t=1.5",
       scrollService: null,
-      color: 'blue'
     };
   },
   mounted() {
@@ -43,16 +41,6 @@ export default {
       else if (this.video().muted)
         this.video().muted = false
     });
-
-    timer(0, 1000).subscribe(() => {
-      if (this.color === 'blue') {
-        this.color = 'red'
-      } else {
-        this.color = 'blue'
-      }
-
-      document.querySelector('.overlay--100').style.background = this.color
-      })
   },
   methods: {
     next() {
