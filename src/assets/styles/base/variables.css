@@ -1,13 +1,32 @@
 :root {
-  --global-viewPadding: 15px;
-
   --color-white: #fff;
-  --color-black: black;
+  --color-offwhite: #f5f6f8;
+  --color-gray-0: #ebedf0;
+  --color-gray-1: #dde0e4;
+  --color-gray-2: #c6ced9;
+  --color-gray-3: #a4afbd;
+  --color-gray-4: #828d9e;
+  --color-gray-5: #5b646e;
+  --color-gray-6: #333f4c;
+  --color-gray-7: #29343f;
+  --color-gray-8: #202a32;
+  --color-gray-9: #171f25;
+  --color-black: #0e1419;
 
   --color-bluegreen: #abe9cd;
   --color-blue: #3eadcf;
+  --color-orangelight: #ebaf19;
+  --color-orage: #e65200;
+
+  --font-family-big: 'Oswald', sans-serif;
+  --font-family-default: 'Rubik', sans-serif;
+
+  --global-viewPadding: 15px;
+
+  --gradient-white: linear-gradient(175.6deg, #ffffff 44.98%, #f7f9fa 121.15%);
 
   --radius-sm: 0.3rem;
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
+  --radius-50: 50%;
 }
