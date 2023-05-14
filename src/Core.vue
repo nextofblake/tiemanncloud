@@ -1,12 +1,31 @@
 <template>
-  <div class="view">
-    <div class="overlay overlay--100">
-      <button @click="next()">Blake Tiemann</button>
+  <div class="screen">
+    <div id="view--dawn" class="view"></div>
+    <div id="view--load" class="view view--waterfall">
+      <div style="position: relative">
+        <img
+          :src="profileSrc"
+          alt="Blake Tiemann"
+          style="
+            height: 30vh;
+            display: inline-block;
+            border-radius: var(--radius-50);
+            object-fit: cover;
+            border: 10px double var(--color-gray-0);
+          "
+        />
+      </div>
       <br />
+      <div div class="typewriter">
+        <h2>{{ ctaOutput }}</h2>
+      </div>
+    </div>
+    <div id="view--home" class="view view--waterfall view--blue">
       <img
-        src="blake_jumbo.png"
+        :src="profileSrc"
+        alt="Blake Tiemann"
         style="
-          height: 40vh;
+          height: 30vh;
           display: inline-block;
           border-radius: var(--radius-50);
           object-fit: cover;
@@ -14,81 +33,95 @@
         "
       />
       <br />
-      <div class="card" style="height: 300px; max-width: 500px">
-        <div
-          class="card-head"
-          style="
-            font-size: 2.5rem;
-            font-family: var(--font-family-big);
-            color: var(--color-gray-7);
-            border-bottom: 3px solid var(--color-gray-3);
-          "
-        >
-          Todo List
-        </div>
-        <div class="card-body">
-          <div class="todo-list">
-            <div class="todo-item">
-              <input type="checkbox" id="todo-item-1" checked />
-              <label for="todo-item-1">Create a personal website</label>
-            </div>
+      <CardViewer>
+        <Card>
+          <template #head> Services </template>
+          <template #body>
+            <div class="todo-list">
+              <div class="todo-item">
+                <input type="checkbox" id="todo-item-1" checked />
+                <label for="todo-item-1">Build websites</label>
+              </div>
 
-            <div class="todo-item">
-              <input type="checkbox" id="todo-item-2" checked />
-              <label label for="todo-item-2">Register for Upwork</label>
-            </div>
+              <div class="todo-item">
+                <input type="checkbox" id="todo-item-2" checked />
+                <label label for="todo-item-2">Search Engine Optimization (SEO)</label>
+              </div>
 
-            <div class="todo-item">
-              <input type="checkbox" id="todo-item-3" />
-              <label for="todo-item-3">Build websites for clients</label>
+              <div class="todo-item">
+                <input type="checkbox" id="todo-item-3" checked />
+                <label for="todo-item-3">Build websites for clients</label>
+              </div>
             </div>
-
-            <div class="todo-item">
-              <input type="checkbox" id="todo-item-4" />
-              <label for="todo-item-4">Profit 💰💰💰</label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="overlay overlay--90">
-      <video loop playsinline>
-        <source :src="mp4Url" type="video/mp4" />
-      </video>
+          </template>
+          <template #footer></template>
+        </Card>
+        <Card>
+          <template #head> Porfolio </template>
+          <template #body>
+            <a href="https://nextdaypersonalloan.com/">Next Day Personal Loan</a> <br />
+            <a href="https://coach.nukshuk.com/">Coach Nukshuk</a> <br />
+            <a href="https://afill.com/">Afill</a> <br />
+            <a href="https://huntinglocator.com">Hunting Locator</a> <br />
+            <a href="https://www.snapfi.com/">Snapfi</a>
+          </template>
+          <template #footer></template>
+        </Card>
+        <Card>
+          <template #head> About Me </template>
+          <template #body>
+            <p>
+              From ideation to implementation, I have had extensive experience progressing projects
+              from start to finish.
+            </p>
+          </template>
+          <template #footer> </template>
+        </Card>
+      </CardViewer>
     </div>
   </div>
 </template>
 
 <script>
-import { ScrollService } from './services/ScrollService'
+import Card from './components/Card.vue'
+import CardViewer from './components/CardViewer.vue'
 
 export default {
   name: 'Core',
+  components: {
+    Card,
+    CardViewer,
+  },
   data() {
     return {
-      video: () => document.querySelector('video'),
-      viewHeight: () => document.documentElement.clientHeight,
-      viewport: () => document.scrollingElement || document.documentElement,
-      mp4Url: 'rickroll.mp4#t=1.5',
-      scrollService: null,
+      ctaText: 'Hello, I am Blake Tiemann',
+      ctaOutput: '',
+      profileSrc: 'blake_profile.png',
     }
   },
   mounted() {
-    // Register Service
-    // @todo => app service container
-    this.scrollService = new ScrollService(this.viewport)
-    window.scrollService = this.scrollService
-    // Service Commands
-    this.scrollService.subject.subscribe((scrollTop) => {
-      if (scrollTop <= this.viewHeight() / 2) this.video().muted = true
-      else if (this.video().muted) this.video().muted = false
-    })
+    const image = new Image()
+    image.onload = this.afterDawn
+    image.src = this.profileSrc
   },
   methods: {
-    next() {
-      this.video().muted = false
-      this.video().play()
-      this.scrollService.moveTo(document.querySelector('.overlay--100').scrollHeight)
+    afterDawn() {
+      const viewStart = document.getElementById('view--dawn')
+      viewStart.classList.add('view--fade')
+
+      let i = 0
+      const typeInterval = setInterval(() => {
+        this.ctaOutput += this.ctaText.charAt(i)
+        i++
+        if (i > this.ctaText.length) {
+          clearInterval(typeInterval)
+          this.afterLoad()
+        }
+      }, 100)
+    },
+    afterLoad() {
+      const viewLoad = document.getElementById('view--load')
+      viewLoad.classList.add('view--fade')
     },
   },
 }
@@ -97,6 +130,71 @@ export default {
 <style>
 @import './assets/styles/core.css';
 
+/* Login */
+.screen {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+.view {
+  background: var(--color-white);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.view--fade {
+  animation: fadeOut 1s forwards;
+}
+.view--waterfall {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* padding: var(--global-viewPadding);/ */
+}
+.view--blue {
+  background-image: linear-gradient(135deg, var(--color-bluegreen) 0%, var(--color-blue) 74%);
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+#view--dawn {
+  z-index: 100;
+}
+#view--load {
+  z-index: 95;
+}
+#view--home {
+  z-index: 90;
+}
+/* Type Writer */
+.typewriter {
+  font-family: monospace;
+  font-size: 1.2rem;
+  overflow: hidden;
+  border-right: 0.15em solid #666;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation: blink 0.5s step-end infinite;
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #666;
+  }
+}
+/* TODO */
 .todo-list {
   display: flex;
   flex-direction: column;
@@ -153,63 +251,5 @@ input[type='checkbox']:checked + label:before {
 
 input[type='checkbox']:checked + label:after {
   opacity: 1;
-}
-
-.card {
-  background: var(--gradient-white);
-  border-radius: var(--radius-md);
-  width: 100%;
-  box-shadow: 1px 2px 6px rgba(164, 175, 189, 0.32);
-}
-.card.transparent {
-  background: transparent;
-  border: 1px solid var(--color-gray-2);
-}
-.card-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6px 10px;
-}
-.card-head + .card-body {
-  padding-top: 10px;
-}
-.card-body {
-  padding: 10px;
-}
-.card-footer {
-  padding: 6px 10px;
-}
-.page {
-  background-image: linear-gradient(135deg, var(--color-bluegreen) 0%, var(--color-blue) 74%);
-  min-height: 70vh;
-}
-.overlay {
-  position: relative;
-  height: 100vh;
-  background-image: linear-gradient(135deg, var(--color-bluegreen) 0%, var(--color-blue) 74%);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: var(--global-viewPadding);
-}
-.overlay--100 {
-  z-index: 100;
-}
-.overlay--90 {
-  z-index: 90;
-  background: var(--color-black);
-  justify-content: center;
-}
-.overlay__swipe {
-  width: 30vw;
-  height: 7px;
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  position: absolute;
-  bottom: var(--global-viewPadding);
-  transition: all 0.75s;
-  z-index: 100;
 }
 </style>
