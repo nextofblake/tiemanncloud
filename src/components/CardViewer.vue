@@ -13,10 +13,8 @@ export default {
 
 <style>
 .viewer {
-  margin: 0 auto;
-  width: 80%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: stretch;
   justify-content: space-between;
 }

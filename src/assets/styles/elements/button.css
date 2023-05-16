@@ -5,7 +5,7 @@ button {
   position: relative;
   display: inline-block;
   padding: 0.35em 1.2em;
-  border: 0.1em solid var(--color-white);
+  border: 0.1em solid var(--color-gray-1);
   border-radius: var(--radius-sm);
   box-sizing: border-box;
   text-decoration: none;
@@ -15,7 +15,7 @@ button {
   transition: all 0.2s;
   mix-blend-mode: screen;
   color: var(--color-black);
-  background-color: var(--color-white);
+  background-color: var(--color-gray-1);
 }
 button::before {
   position: absolute;
@@ -29,5 +29,9 @@ button::before {
 }
 button:hover {
   background-color: transparent;
-  color: var(--color-white);
+  color: var(--color-gray-1);
+}
+
+.button--unblended {
+  mix-blend-mode: initial;
 }
