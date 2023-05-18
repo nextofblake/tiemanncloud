@@ -23,38 +23,25 @@
       <VideoCard :src="servicesVideoSrc">
         <template #head> Services </template>
         <template #body>
-          <h2>Services</h2>
-          <p>
-            Welcome to my personal freelance web development business site! I'm a professional web
-            developer offering a wide range of services to help you create a stunning and functional
-            website. With years of experience in the industry, I specialize in crafting unique and
-            tailored websites that meet your specific needs. Whether you're an individual, small
-            business, or large corporation, I can assist you in developing a responsive and
-            user-friendly website that engages your target audience and drives conversions. My
-            expertise spans across various technologies and platforms, including HTML5, CSS3,
-            JavaScript, WordPress, and more. When you work with me, you can expect a collaborative
-            and transparent approach.
-          </p>
+          <ul class="bullet-list">
+            <li>Internet Presence</li>
+            <li>Content Delivery</li>
+            <li>Web Development</li>
+          </ul>
         </template>
       </VideoCard>
       <VideoCard :src="portfolioVideoSrc">
         <template #head> Portfolio </template>
         <template #body>
-          <a href="https://nextdaypersonalloan.com/">Next Day Personal Loan</a>,
-          <a href="https://coach.nukshuk.com/">Coach Nukshuk</a>,
-          <a href="https://afill.com/">Afill</a>,
-          <a href="https://huntinglocator.com">Hunting Locator</a>,
-          <a href="https://www.snapfi.com/">Snapfi</a>
+          <ul class="bullet-list">
+            <li>6 years experience</li>
+            <li>Full-stack developer</li>
+            <li>Product management</li>
+          </ul>
         </template>
       </VideoCard>
       <VideoCard :src="aboutMeVideoSrc">
         <template #head> About Me </template>
-        <template #body>
-          <p>
-            From ideation to implementation, I have had extensive experience progressing projects
-            from start to finish.
-          </p>
-        </template>
       </VideoCard>
     </CardContainer>
     <div class="welcome-icons">
@@ -84,6 +71,7 @@
 import { inject } from 'vue'
 import CardContainer from '../components/CardContainer.vue'
 import VideoCard from '../components/VideoCard.vue'
+import { ScrollService } from '../services/ScrollService'
 
 export default {
   name: 'HomeView',
@@ -102,6 +90,7 @@ export default {
       portfolioVideoSrc: 'portfolio.mp4#t=1',
       aboutMeVideoSrc: 'rickroll.mp4#t=1',
       welcomeFullText: 'Hello, I am Blake Tiemann',
+      scrollService: null,
     }
   },
   mounted() {
@@ -110,6 +99,8 @@ export default {
       video.muted = false
       video.play()
     })
+    this.scrollService = new ScrollService(() => document.documentElement)
+    this.scrollService.moveTo(500)
   },
 }
 </script>
@@ -127,5 +118,18 @@ export default {
 .icon {
   width: 42px;
   height: 42px;
+}
+
+/* TODO move somewhere else */
+.bullet-list {
+  list-style-type: disc;
+  margin: 0;
+  padding: 0;
+  padding-left: 40px;
+  font-size: 24px;
+}
+
+.bullet-list li {
+  margin-bottom: 10px;
 }
 </style>
