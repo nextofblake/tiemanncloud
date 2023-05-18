@@ -15,6 +15,7 @@
 
   --color-bluegreen: #abe9cd;
   --color-blue: #3eadcf;
+  --color-darkblue: rgb(30, 48, 80);
   --color-orangelight: #ebaf19;
   --color-orange: #e65200;
 
@@ -22,11 +23,11 @@
   --font-family-default: 'Rubik', sans-serif;
   --font-size-xl: 50px;
   --font-size-lg: 42px;
-  --font-size-md: 20px;
+  --font-size-md: 16px;
   --font-size-sm: 12px;
   --font-size-xs: 8px;
 
-  --global-viewPadding: 15px;
+  --global-viewPadding: 20px;
 
   --gradient-white: linear-gradient(175.6deg, #ffffff 44.98%, #f7f9fa 121.15%);
 

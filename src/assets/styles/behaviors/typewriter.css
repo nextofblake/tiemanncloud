@@ -8,6 +8,14 @@
   letter-spacing: 0.15em;
   animation: blink 0.5s step-end infinite;
 }
+.typewriter--inked {
+  font-family: monospace;
+  font-size: 1.2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+}
 
 @keyframes blink {
   from,

@@ -18,8 +18,6 @@ export default {
   },
   data() {
     return {
-      servicesVideo: 'services.mp4',
-      portfolioVideo: 'portfolio.mp4',
       name: '',
       message: '',
       showHome: false,
