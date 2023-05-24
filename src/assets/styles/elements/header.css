@@ -1,3 +1,7 @@
+h1 {
+  color: var(--color-offwhite);
+  font-size: var(--font-size-xl);
+}
 .header {
   position: relative;
   display: inline-block;

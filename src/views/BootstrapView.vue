@@ -6,7 +6,7 @@
 import { inject } from 'vue'
 
 export default {
-  name: 'BlankView',
+  name: 'BootstrapView',
   setup() {
     return {
       fadeService: inject('fadeService'),

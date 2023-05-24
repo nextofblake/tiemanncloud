@@ -1,25 +1,23 @@
 <template>
-  <HomeView v-if="showHome" />
-  <WelcomeView @discover="showHome = true" />
-  <BlankView />
+  <HomeView v-show="showHome" />
+  <WelcomeView @welcome="showHome = true" />
+  <BootstrapView />
 </template>
 
 <script>
-import BlankView from './views/BlankView.vue'
+import BootstrapView from './views/BootstrapView.vue'
 import HomeView from './views/HomeView.vue'
 import WelcomeView from './views/WelcomeView.vue'
 
 export default {
   name: 'Core',
   components: {
-    BlankView,
+    BootstrapView,
     HomeView,
     WelcomeView,
   },
   data() {
     return {
-      name: '',
-      message: '',
       showHome: false,
     }
   },

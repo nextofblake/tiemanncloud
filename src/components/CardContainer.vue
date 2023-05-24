@@ -1,8 +1,13 @@
 <template>
-  <div ref="self" class="card-container">
+  <div
+    ref="self"
+    class="card-container"
+    :style="{ minHeight: `calc(${minHeight} - var(--global-viewPadding) * 2)` }"
+  >
     <div class="card-layout">
       <slot></slot>
     </div>
+    <slot name="centered"></slot>
   </div>
 </template>
 
@@ -10,6 +15,13 @@
 export default {
   name: 'CardContainer',
   mounted() {},
+  props: {
+    minHeight: {
+      type: String,
+      default: '100%',
+      required: false,
+    },
+  },
 }
 </script>
 
@@ -17,12 +29,7 @@ export default {
 @import '../assets/styles/core.css';
 .card-container {
   padding: var(--global-viewPadding);
-  background-image: linear-gradient(
-    175.6deg,
-    var(--color-gray-7) 44.98%,
-    var(--color-gray-9) 121.15%
-  );
-  width: 100%;
+  background-image: var(--gradient-dark);
 }
 .card-layout {
   display: grid;

@@ -1,25 +1,28 @@
 <template>
-  <div ref="self" class="card" @mouseenter="mouseEnter" @mouseleave="mouseLeave" @click="play">
+  <div ref="self" class="card">
     <div class="card-head">
-      <div class="card-head--overlay">
+      <video ref="video" @ended="onEndedVideo">
+        <source :src="src" type="video/mp4" />
+      </video>
+      <div class="card-head--controls" :style="{ width: controlWidth }"></div>
+      <div class="card-head--overlay" @click.prevent="toggleVideo">
         <svg
-          v-if="showPlayButton"
+          v-show="!this.playing"
           class="card-head--overlay-icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
         >
-          <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
           <path
-            d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c7.6-4.2 16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5s-12.3-12.2-12.3-20.9V168c0-8.7 4.7-16.7 12.3-20.9z"
-          />
+            d="M256 504c137 0 248-111 248-248S393 8 256 8 8 119 8 256s111 248 248 248zM40 256c0-118.7 96.1-216 216-216 118.7 0 216 96.1 216 216 0 118.7-96.1 216-216 216-118.7 0-216-96.1-216-216zm331.7-18l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM192 335.8V176.9c0-4.7 5.1-7.6 9.1-5.1l134.5 81.7c3.9 2.4 3.8 8.1-.1 10.3L201 341c-4 2.3-9-.6-9-5.2z"
+          ></path>
         </svg>
-        <slot name="head"></slot>
       </div>
-      <video ref="video" :controls="enableControls" loop playsinline>
-        <source :src="src" type="video/mp4" />
-      </video>
     </div>
     <div class="card-body">
+      <div class="card-body--title">
+        <slot name="head"></slot>
+      </div>
+      <br />
       <slot name="body"></slot>
     </div>
     <div class="card-footer">
@@ -39,26 +42,59 @@ export default {
   },
   data() {
     return {
-      showPlayButton: false,
-      enableControls: false,
+      playing: false,
+      controlWidth: '0%',
+      controlTransitionDuration: '0.5s',
     }
   },
   mounted() {
-    this.$refs.video.muted = true
-    this.$refs.video.play()
+    document.addEventListener('click', this.onClickAwayVideo)
+    setInterval(this.setControlWidth, 500)
   },
   methods: {
-    mouseEnter() {
-      this.enableControls = true
+    toggleVideo() {
+      if (this.playing) {
+        this.stopVideo()
+      } else {
+        this.startVideo()
+      }
+    },
+    startVideo() {
+      console.log('hello start')
+      this.$refs.video.play()
+      this.$refs.video.currentTime = 0
       this.$refs.video.muted = false
+
+      this.playing = true
+      this.controlTransitionDuration = '0'
       this.$refs.self.classList.add('card--hovering')
+    },
+    stopVideo() {
+      console.log('hello stop')
+      this.$refs.video.muted = true
+
+      this.playing = false
+      this.$refs.self.classList.remove('card--hovering')
+    },
+    onEndedVideo() {
+      this.stopVideo()
       this.$refs.video.currentTime = 0
       this.$refs.video.play()
     },
-    mouseLeave() {
-      this.enableControls = false
-      this.$refs.video.muted = true
-      this.$refs.self.classList.remove('card--hovering')
+    onClickAwayVideo(event) {
+      window.lastVid = this.$refs.self
+      window.lastClick = event
+      // stop video if playing and clicked off
+      if (this.playing && this.$refs.self && !this.$refs.self.contains(event.target)) {
+        this.stopVideo()
+      }
+    },
+    setControlWidth() {
+      const currentTime = this.$refs.video.currentTime
+      const duration = this.$refs.video.duration
+      const percentage = Math.round((currentTime / duration) * 100)
+
+      this.controlWidth = this.playing ? percentage + '%' : '0%'
     },
   },
 }
@@ -73,7 +109,7 @@ export default {
   transition: transform 1s ease; /* Hover effect */
 }
 .card--hovering {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 .card-shadow {
   box-shadow: 3px 3px 5px var(--color-gray-6);
@@ -97,7 +133,7 @@ export default {
   padding-top: 10px;
 }
 .card-body {
-  padding: 10px;
+  padding: 20px;
 }
 .card-footer {
   padding: 6px 10px;
@@ -107,11 +143,29 @@ export default {
  * Video Cards 
  * - needed to apply styling directly to the video slot
  */
+.card--hovering .card-head--overlay {
+  background: none;
+}
+.card-body--title {
+  font-size: 2.5rem;
+  font-family: var(--font-family-big);
+  color: var(--color-gray-7);
+}
 .card-head > * {
   border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
-.card--hovering .card-head--overlay {
-  opacity: 0;
+.card-head--controls {
+  position: absolute;
+  bottom: -3px;
+  height: 3px;
+  background-image: none;
+
+  /* video play percent*/
+  width: 0%;
+  transition: width 0.5s linear;
+}
+.card--hovering .card-head--controls {
+  background: var(--gradient-alt);
 }
 .card-head--overlay {
   position: absolute;
@@ -121,11 +175,16 @@ export default {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   color: var(--color-gray-3);
+
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
 }
 .card-head--overlay-icon {
-  height: 80px;
+  height: 10vh;
+}
+.card-head--overlay-icon path {
+  fill: var(--color-gray-9);
 }
 </style>
